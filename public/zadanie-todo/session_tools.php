@@ -20,9 +20,10 @@ function addTodo($name, $content, $isDone)
 {
     $unique = mt_rand(1, 10000);
     $todo = [
-        'name'    => $name,
-        'content' => $content,
-        'isDone'  => $isDone,
+        'name'      => $name,
+        'content'   => $content,
+        'isDone'    => $isDone,
+        'createdAt' => new DateTime(),
     ];
 
     $_SESSION['todos'][$unique] = $todo;
@@ -33,7 +34,6 @@ function addTodo($name, $content, $isDone)
 function deleteTodo($key)
 {
     unset($_SESSION['todos'][$key]);
-
 }
 
 function getAllTodos()

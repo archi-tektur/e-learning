@@ -18,5 +18,3 @@ listenForSessionPurge();
 foreach (getAllTodos() as $key => $eachTodo) {
     echo renderTodo($key, $eachTodo);
 }
-
-
