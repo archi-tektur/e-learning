@@ -1,32 +1,14 @@
-<?php
+<?php declare(strict_types=1);
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-function makeSquare($a)
-{
-    return $a * $a;
-}
-
-$integer = 1;
-$float = 1.4;
-$string = 'Jakikolwiek napis';
-$bool = true;
-$bool2 = false;
-$null = null;
-
-$array = [1, 'echo', 3.3];
-
-$assoc = [
-    'key'  => 'value',
-    'key2' => 'value2',
+$creditCard = [
+    'uid'       => '5489898908943089430',
+    'number'    => '1234 5678 9101 1213',
+    'validity'  => '03/20',
+    'ownerName' => 'Jose Maria Fuentes',
+    'cvc'       => 'CVC',
 ];
 
-echo $assoc['key'];
 ?>
-
-
 <!doctype html>
 <html lang="pl">
 <head>
@@ -40,16 +22,15 @@ echo $assoc['key'];
 <body>
 
 <div class="card">
-    <h1 class="card__number">1234 5678 9101 1213</h1>
+    <h1 class="card__number"><?php echo $creditCard['number']; ?></h1>
     <span class="card__validity">
         <span class="card__text">Valid through</span>
-        <span class="card__date">02/20</span>
+        <span class="card__date"><?php echo $creditCard['validity']; ?></span>
     </span>
-    <span class="card__owner-name">Jose Maria Fuentes</span>
+    <span class="card__owner-name"><?php echo $creditCard['ownerName']; ?></span>
 
     <img class="card__logo" src="mastercard-logo.png" alt="Logo mastercard">
-    <span class="card__cvc">123</span>
+    <span class="card__cvc"><?php echo $creditCard['cvc']; ?></span>
 </div>
-
 </body>
 </html>
