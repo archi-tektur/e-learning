@@ -1,3 +1,32 @@
+<?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+function makeSquare($a)
+{
+    return $a * $a;
+}
+
+$integer = 1;
+$float = 1.4;
+$string = 'Jakikolwiek napis';
+$bool = true;
+$bool2 = false;
+$null = null;
+
+$array = [1, 'echo', 3.3];
+
+$assoc = [
+    'key'  => 'value',
+    'key2' => 'value2',
+];
+
+echo $assoc['key'];
+?>
+
+
 <!doctype html>
 <html lang="pl">
 <head>

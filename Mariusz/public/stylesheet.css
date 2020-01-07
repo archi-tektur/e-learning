@@ -12,7 +12,7 @@ body {
 
 .card {
     background: #021E73;
-    color: #F2E205;
+    color: #F2CB05;
     width: 357px;
     height: 224px;
     border-radius: 20px;
@@ -65,7 +65,7 @@ body {
     position: absolute;
     right: 10px;
     top: 10px;
-    background: #F2E205;
+    background: #F2CB05;
     color: #021E73;
     border-radius: 2px;
     padding: 3px 5px;
