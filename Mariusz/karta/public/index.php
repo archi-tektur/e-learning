@@ -1,10 +1,13 @@
 <?php declare(strict_types=1);
 
-$currentTime = new DateTime('now');
+require_once '../../../php_error_handling.php';
+require_once 'functions.php';
 
+$number = $_GET['number'];
+$currentTime = new DateTime('now');
 $creditCard = [
     'uid'       => '5489898908943089430',
-    'number'    => '1234 5678 9101 1213',
+    'number'    => formatCardNumber($number),
     'validity'  => '03/20',
     'ownerName' => 'Jose Maria Fuentes',
     'cvc'       => 'CVC',
