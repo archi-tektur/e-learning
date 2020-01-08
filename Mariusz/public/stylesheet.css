@@ -8,16 +8,17 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #EEEEEE;
 }
 
 .card {
-    background: #021E73;
-    color: #F2CB05;
+    background: url("spikes.png") repeat repeat;
+    color: #021E73;
     width: 357px;
     height: 224px;
     border-radius: 20px;
     padding: 15px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
@@ -60,6 +61,11 @@ body {
     top: 10px;
 }
 
+.card__owner-name {
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
 .card__cvc {
     font-family: monospace;
     position: absolute;
@@ -69,5 +75,13 @@ body {
     color: #021E73;
     border-radius: 2px;
     padding: 3px 5px;
+    font-weight: bold;
+}
+
+.currentDate {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-family: sans-serif;
     font-weight: bold;
 }

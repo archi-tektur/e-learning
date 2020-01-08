@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+$currentTime = new DateTime('now');
+
 $creditCard = [
     'uid'       => '5489898908943089430',
     'number'    => '1234 5678 9101 1213',
@@ -32,5 +34,6 @@ $creditCard = [
     <img class="card__logo" src="mastercard-logo.png" alt="Logo mastercard">
     <span class="card__cvc"><?php echo $creditCard['cvc']; ?></span>
 </div>
+<span class="currentDate">Dziś jest <?php echo $currentTime->format('d.m.Y, H:i:s') ?></span>
 </body>
 </html>
