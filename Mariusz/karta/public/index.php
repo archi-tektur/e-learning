@@ -4,11 +4,21 @@ require_once '../../../php_error_handling.php';
 require_once 'functions.php';
 
 $number = $_GET['number'];
+$validity = $_GET['validity'];
 $currentTime = new DateTime('now');
+
+$displayedCardNumber = '';
+
+if (isCardNumberValid($number)) {
+    $displayedCardNumber = formatCardNumber($number);
+} else {
+    $displayedCardNumber = 'Niepoprawna długość.';
+}
+
 $creditCard = [
     'uid'       => '5489898908943089430',
-    'number'    => formatCardNumber($number),
-    'validity'  => '03/20',
+    'number'    => $displayedCardNumber,
+    'validity'  => formatValidity($validity),
     'ownerName' => 'Jose Maria Fuentes',
     'cvc'       => 'CVC',
 ];

@@ -14,3 +14,13 @@ function formatCardNumber(string $cardNumber): string
 
     return $formatted;
 }
+
+function formatValidity(string $input): string
+{
+    return str_replace('-', '/', $input);
+}
+
+function isCardNumberValid(string $cardNumber): bool
+{
+    return strlen($cardNumber) === 16;
+}
