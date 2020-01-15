@@ -34,7 +34,8 @@ class Routing
     public function matchRoute(string $path): Route
     {
         /** @var Route $each */
-        $route = array_filter($this->routes, fn($each) => $each->getPath() === $path);
+        $route = array_values(array_filter($this->routes, fn($each) => $each->getPath() === $path));
+
 
         if (count($route) < 1) {
             throw new Exception('Route not found.');
@@ -66,6 +67,6 @@ class Routing
         }
 
         $instance = new $controllerName();
-        $instance->$methodName();
+        echo $instance->$methodName();
     }
 }
