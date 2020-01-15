@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Ścieżka główna",
+    "path": "/path",
+    "controller": "ActionController",
+    "method": "index"
+  },
+  {
+    "name": "Ścieżka poboczna",
+    "path": "/path-2",
+    "controller": "ActionController",
+    "method": "otherMethod"
+  }
+]
