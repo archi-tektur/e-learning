@@ -5,11 +5,11 @@ namespace App\Controller;
 /**
  * ActionController
  */
-class ActionController
+class ActionController extends AbstractController
 {
     public function index(): string
     {
-        return 'Działa!';
+        return $this->render('index.html.twig', ['title' => 'Jakiś tytuł', 'content' => 'treść']);
     }
 
     public function otherMethod(): string
