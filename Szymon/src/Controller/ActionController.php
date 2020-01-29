@@ -9,7 +9,7 @@ class ActionController extends AbstractController
 {
     public function index(): string
     {
-        return $this->render('index.html.twig', ['title' => 'Jakiś tytuł', 'content' => 'treść']);
+        return $this->render('index.php.twig', ['title' => 'Jakiś tytuł', 'content' => 'treść']);
     }
 
     public function otherMethod(): string

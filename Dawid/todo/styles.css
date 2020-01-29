@@ -20,6 +20,7 @@ body {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     width: 400px;
     background: white;
+    margin: 5px;
 }
 
 .box__nav {
@@ -42,9 +43,18 @@ body {
     font-size: 0.95em;
 }
 
+.box__stars {
+    color: gold;
+    font-family: monospace;
+    font-size: 1.5em;
+    display: block;
+    font-weight: bold;
+    letter-spacing: -4px;
+    margin: 5px 0;
+}
+
 .box__time {
     display: block;
-    margin-top: 15px;
     color: #555555;
 }
 
