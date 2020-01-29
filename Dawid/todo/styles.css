@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #F8F9FA;
+
+}
+
+.box {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    width: 400px;
+    background: white;
+}
+
+.box__nav {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px
+}
+
+.box__title {
+    font-size: 1.1em;
+}
+
+.box__content {
+    padding: 16px 8px 8px;
+}
+
+.box__text {
+    font-size: 0.95em;
+}
+
+.box__time {
+    display: block;
+    margin-top: 15px;
+    color: #555555;
+}
+
+.box__close-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: red;
+    text-decoration: none;
+    color: white;
+    font-weight: 800;
+    font-size: 1.5em;
+    transition: background-color 0.2s ease-in-out;
+    user-select: none;
+    outline: none;
+}
+
+.box__close-button:hover, .box__close-button:focus {
+    background: #8D0000;
+}
