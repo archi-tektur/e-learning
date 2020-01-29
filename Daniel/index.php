@@ -32,3 +32,13 @@ foreach ($people as $person) {
 
     echo "{$person['name']} {$name}, {$person['age']} lat, {$text} {$text2} <br />";
 }
+
+function showData(string $name, string $surname, string $age)
+{
+    return "{$name} {$surname} {$age} <br/>";
+}
+
+foreach ($people as $each) {
+    echo showData($each ['name'], $each ['surname'], $each['age']);
+}
+
