@@ -32,9 +32,15 @@ class SessionHook
         $_SESSION['tasks'] = $tasks;
     }
 
-
     public function clear(): void
     {
         $this->init();
+    }
+
+    public function remove(int $id): void
+    {
+        /** @var Task $element */
+        $rest = array_filter($_SESSION['tasks'], fn($element) => $element->getId() !== $id);
+        $_SESSION['tasks'] = $rest;
     }
 }

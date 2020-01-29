@@ -6,15 +6,12 @@ require_once 'listeners.php';
 
 $session = new SessionHook();
 
-$longContent = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aperiam aut consectetur corporis deserunt est eveniet, ex explicabo harum hic impedit iste laudantium necessitatibus nulla placeat, porro sunt tempore voluptates?';
+if (array_key_exists('remove', $_GET)) {
+    $session->remove((int)$_GET['remove']);
+    header('Location: /');
+    exit;
+}
 
-$task = new Task();
-$task->setTitle('Niezwykłe zadanie')
-     ->setContent($longContent)
-     ->setAddDate(new DateTime())
-     ->setStarCount(-20);
-
-$session->setTasks([...$session->getTasks(), $task]);
 $tasks = $session->getTasks();
 
 ?>
@@ -35,8 +32,8 @@ $tasks = $session->getTasks();
 <?php foreach ($tasks as $task): ?>
     <div class="box">
         <div class="box__nav">
-            <h2 class="box__title">[#<?php echo $task->getId(); ?>] <?php echo $task->getTitle(); ?></h2>
-            <a class="box__close-button" href="">&times;</a>
+            <h2 class="box__title"><?php echo $task->getTitle(); ?></h2>
+            <a class="box__close-button" href="?remove=<?php echo $task->getId(); ?>">&times;</a>
         </div>
         <div class="box__content">
             <p class="box__text"><?php echo $task->getContent(); ?></p>
