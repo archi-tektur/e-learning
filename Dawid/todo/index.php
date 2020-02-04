@@ -3,6 +3,7 @@ require_once '../../php_error_handling.php';
 require_once 'Task.php';
 require_once 'SessionHook.php';
 require_once 'listeners.php';
+require_once 'session_fullfill.php';
 
 $session = new SessionHook();
 
@@ -13,6 +14,9 @@ if (array_key_exists('remove', $_GET)) {
 }
 
 $tasks = $session->getTasks();
+
+// run this function only once, otherwise it'll add 4 new tasks each time you'll handle the request (F5 in browser)
+fullfillSession($session);
 
 ?>
 <!doctype html>
