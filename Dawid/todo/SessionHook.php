@@ -37,15 +37,40 @@ class SessionHook
         $this->init();
     }
 
+    /**
+     * Get task from list by it's unique ID
+     *
+     * @param int $id
+     * @return Task|null
+     */
+    public function getOne(int $id): ?Task
+    {
+        // ensure session not empty
+        if (!array_key_exists('tasks', $_SESSION)) {
+            $this->init();
+            // if session is empty, no element is present
+            return null;
+        }
+
+        // make new array with element that matches callback
+        $filtered = array_filter($_SESSION['tasks'], fn($element) => $element->getId() === $id);
+
+        // reassign keys to this array (don't mind this now)
+        $reassinged = array_values($filtered);
+
+        // if element exists return it, else return null
+        return count($reassinged) === 1 ? $reassinged[0] : null;
+    }
+
+    public function add(Task $task): void
+    {
+        $_SESSION = array_unique([...$_SESSION, $task]);
+    }
+
     public function remove(int $id): void
     {
         /** @var Task $element */
         $rest = array_filter($_SESSION['tasks'], fn($element) => $element->getId() !== $id);
         $_SESSION['tasks'] = $rest;
-    }
-
-    public function getTaskById(int $id): Task
-    {
-
     }
 }
