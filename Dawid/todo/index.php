@@ -38,8 +38,8 @@ $tasks = $session->getTasks();
         <div class="box__nav">
             <h2 class="box__title"><?php echo $task->getTitle(); ?></h2>
             <div  class="box__buttons">
-                <a class="box__archive-button" href="?archive=<?php echo $task->getId(); ?>"><i class="fas fa-archive"></i></a>
-                <a class="box__close-button" href="?remove=<?php echo $task->getId(); ?>">&times;</a>
+                <a title="Archiwizuj" class="box__archive-button" href="?archive=<?php echo $task->getId(); ?>"><span aria-hidden="true" class="fas fa-archive"></span></a>
+                <a title="Zamknij" class="box__close-button" href="?remove=<?php echo $task->getId(); ?>">&times;</a>
             </div>
         </div>
         <div class="box__content">

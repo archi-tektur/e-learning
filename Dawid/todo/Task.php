@@ -7,6 +7,9 @@ class Task
     private string $content;
     private int $starCount;
     private DateTime $addDate;
+    private bool $isArchived;
+
+
 
     public function __construct()
     {
@@ -67,4 +70,16 @@ class Task
         $this->addDate = $addDate;
         return $this;
     }
+
+    public function isArchived(): bool
+    {
+        return $this->isArchived;
+    }
+
+    public function setIsArchived(bool $isArchived): Task
+    {
+        $this->isArchived = $isArchived;
+        return $this;
+    }
+
 }

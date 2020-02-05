@@ -44,7 +44,7 @@ class SessionHook
         $_SESSION['tasks'] = $rest;
     }
 
-    public function archive(int $id): void
+    public function getTaskById(int $id): Task
     {
 
     }
