@@ -43,4 +43,9 @@ class SessionHook
         $rest = array_filter($_SESSION['tasks'], fn($element) => $element->getId() !== $id);
         $_SESSION['tasks'] = $rest;
     }
+
+    public function archive(int $id): void
+    {
+
+    }
 }

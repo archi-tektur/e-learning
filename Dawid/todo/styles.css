@@ -59,6 +59,30 @@ body {
     color: #555555;
 }
 
+.box__buttons {
+    display: flex;
+}
+
+.box__archive-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: darkgrey;
+    color: white;
+    font-size: 1em;
+    user-select: none;
+    outline: none;
+    transition: background-color 0.2s ease-in-out;
+    margin: 0.2px;
+}
+
+.box__archive-button:hover, .box__archive-button:focus {
+    background: grey;
+}
+
 .box__close-button {
     display: flex;
     justify-content: center;
@@ -74,6 +98,7 @@ body {
     transition: background-color 0.2s ease-in-out;
     user-select: none;
     outline: none;
+    margin: 0.2px;
 }
 
 .box__close-button:hover, .box__close-button:focus {

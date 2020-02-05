@@ -16,7 +16,7 @@ if (array_key_exists('remove', $_GET)) {
 $tasks = $session->getTasks();
 
 // run this function only once, otherwise it'll add 4 new tasks each time you'll handle the request (F5 in browser)
-fullfillSession($session);
+//fullfillSession($session);
 
 ?>
 <!doctype html>
@@ -37,7 +37,10 @@ fullfillSession($session);
     <div class="box">
         <div class="box__nav">
             <h2 class="box__title"><?php echo $task->getTitle(); ?></h2>
-            <a class="box__close-button" href="?remove=<?php echo $task->getId(); ?>">&times;</a>
+            <div  class="box__buttons">
+                <a class="box__archive-button" href="?archive=<?php echo $task->getId(); ?>"><i class="fas fa-archive"></i></a>
+                <a class="box__close-button" href="?remove=<?php echo $task->getId(); ?>">&times;</a>
+            </div>
         </div>
         <div class="box__content">
             <p class="box__text"><?php echo $task->getContent(); ?></p>
