@@ -1,20 +1,23 @@
 <?php declare(strict_types=1);
 
-require_once 'Mage.php';
-
-// Error handling mechanism
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', "1");
-error_reporting(E_ALL);
-
-
-$mages = ['Natsu', 'Lucy', 'Minerva', 'Gray',];
-
-function names($mages)
+function createMageArray($name, $surname, $game, $isMortal)
 {
-    foreach ($mages as $mage) {
-        echo $mage . ', ';
-    }
+    return ['name' => $name, 'surname' => $surname, 'game' => $game, 'isMortal' => $isMortal];
 }
 
-names($mages);
+function showCharacterDetails($character)
+{
+    $mortality = $character['isMortal'] ? 'postać może umrzeć w grze.' : 'postać nie może umrzeć w grze.';
+    return $character['name'] . ' ' . $character['surname'] . ' ' . $character['game'] . ', ' . $mortality;
+}
+
+$c1 = createMageArray('Vernon', 'Roche', 'Wiedźmin', false);
+$c2 = createMageArray('Garus', 'Vakarian', 'Mass Effect', false);
+$c3 = createMageArray('Ashley', 'Williams', 'Mass Effect', true);
+
+$characters = [$c1, $c2, $c3];
+
+foreach ($characters as $character) {
+    echo showCharacterDetails($character) . '<br>';
+}
+
