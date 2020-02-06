@@ -1,22 +1,19 @@
 <?php declare(strict_types=1);
-require_once '../../php_error_handling.php';
-require_once 'Task.php';
-require_once 'SessionHook.php';
-require_once 'listeners.php';
-require_once 'session_fullfill.php';
+require_once __DIR__ . '/../../php_error_handling.php';
+require_once __DIR__ . '/Task.php';
+require_once __DIR__ . '/SessionHook.php';
+require_once __DIR__ . '/EventListener.php';
+require_once __DIR__ . '/session_fullfill.php';
 
 $session = new SessionHook();
 
-if (array_key_exists('remove', $_GET)) {
-    $session->remove((int)$_GET['remove']);
-    header('Location: /');
-    exit;
-}
-
-$tasks = $session->getTasks();
+$listener = new EventListener($session);
+$listener->enable();
 
 // run this function only once, otherwise it'll add 4 new tasks each time you'll handle the request (F5 in browser)
-//fullfillSession($session);
+
+/** @var Task[] $tasks */
+$tasks = $session->getTasks();
 
 ?>
 <!doctype html>
@@ -34,12 +31,18 @@ $tasks = $session->getTasks();
 <body>
 
 <?php foreach ($tasks as $task): ?>
-    <div class="box">
+    <div class="<?php echo $task->isArchived() ? 'box box--colorless' : 'box'; ?>">
         <div class="box__nav">
             <h2 class="box__title"><?php echo $task->getTitle(); ?></h2>
-            <div  class="box__buttons">
-                <a class="box__archive-button" href="?archive=<?php echo $task->getId(); ?>"><i class="fas fa-archive"></i></a>
-                <a class="box__close-button" href="?remove=<?php echo $task->getId(); ?>">&times;</a>
+            <div class="box__buttons">
+                <a title="Archiwizuj" class="box__archive-button" href="?archive=<?php echo $task->getId(); ?>">
+                    <span aria-hidden="true" class="fas fa-archive"></span>
+                </a>
+                <?php if (!$task->isArchived()): ?>
+                    <a title="Zamknij"
+                       class="box__close-button"
+                       href="?remove=<?php echo $task->getId(); ?>">&times;</a>
+                <?php endif; ?>
             </div>
         </div>
         <div class="box__content">
