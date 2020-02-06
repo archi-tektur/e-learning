@@ -13,6 +13,7 @@ class EventListener
     {
         $this->archiveListener();
         $this->deleteListener();
+        $this->emptySessionListener();
     }
 
     private function archiveListener(): void
@@ -36,6 +37,13 @@ class EventListener
             $this->sessionHook->remove((int)$_GET['remove']);
             header('Location: /');
             exit;
+        }
+    }
+
+    private function emptySessionListener(): void
+    {
+        if (count($this->sessionHook->getTasks()) === 0) {
+            fullfillSession($this->sessionHook);
         }
     }
 }

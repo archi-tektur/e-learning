@@ -11,7 +11,6 @@ $listener = new EventListener($session);
 $listener->enable();
 
 // run this function only once, otherwise it'll add 4 new tasks each time you'll handle the request (F5 in browser)
-//fullfillSession($session);
 
 /** @var Task[] $tasks */
 $tasks = $session->getTasks();
