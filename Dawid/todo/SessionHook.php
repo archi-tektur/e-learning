@@ -64,7 +64,29 @@ class SessionHook
 
     public function add(Task $task): void
     {
-        $_SESSION = array_unique([...$_SESSION, $task]);
+        $_SESSION['tasks'][] = $task;
+    }
+
+    public function replace(Task $newTask): void
+    {
+        /** @var int|null $key */
+        $key = null;
+
+        /**
+         * @var int  $i
+         * @var Task $task
+         */
+        foreach ($_SESSION['tasks'] as $i => $task) {
+            if ($task->getId() === $newTask->getId()) {
+                $key = $i;
+            }
+        }
+
+        if ($key === null) {
+            return;
+        }
+
+        $_SESSION['tasks'][$key] = $newTask;
     }
 
     public function remove(int $id): void
