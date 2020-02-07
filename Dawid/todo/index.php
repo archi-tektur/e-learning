@@ -10,7 +10,6 @@ $session = new SessionHook();
 $listener = new EventListener($session);
 $listener->enable();
 
-// run this function only once, otherwise it'll add 4 new tasks each time you'll handle the request (F5 in browser)
 
 /** @var Task[] $tasks */
 $tasks = $session->getTasks();
@@ -29,33 +28,36 @@ $tasks = $session->getTasks();
     <title>Nasze zadanie TODO</title>
 </head>
 <body>
-
-<?php foreach ($tasks as $task): ?>
-    <div class="<?php echo $task->isArchived() ? 'box box--colorless' : 'box'; ?>">
-        <div class="box__nav">
-            <h2 class="box__title"><?php echo $task->getTitle(); ?></h2>
-            <div class="box__buttons">
-                <a title="Archiwizuj" class="box__archive-button" href="?archive=<?php echo $task->getId(); ?>">
-                    <span aria-hidden="true" class="fas fa-archive"></span>
-                </a>
-                <?php if (!$task->isArchived()): ?>
-                    <a title="Zamknij"
-                       class="box__close-button"
-                       href="?remove=<?php echo $task->getId(); ?>">&times;</a>
-                <?php endif; ?>
+<div class="container">
+    <div class="container__buttons">
+        <a title="Reset" class="container__reset-button">RESET</a>
+    </div>
+    <?php foreach ($tasks as $task): ?>
+        <div class="<?php echo $task->isArchived() ? 'box box--colorless' : 'box'; ?>">
+            <div class="box__nav">
+                <h2 class="box__title"><?php echo $task->getTitle(); ?></h2>
+                <div class="box__buttons">
+                    <a title="Archiwizuj" class="box__archive-button" href="?archive=<?php echo $task->getId(); ?>">
+                        <span aria-hidden="true" class="fas fa-archive"></span>
+                    </a>
+                    <?php if (!$task->isArchived()): ?>
+                        <a title="Zamknij"
+                           class="box__close-button"
+                           href="?remove=<?php echo $task->getId(); ?>">&times;</a>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <div class="box__content">
+                <p class="box__text"><?php echo $task->getContent(); ?></p>
+                <span class="box__stars">
+                <?php for ($i = 0; $i < $task->getStarCount() + 1; $i++): ?>
+                    <span class="fas fa-star"></span>
+                <?php endfor; ?>
+                </span>
+                <span class="box__time">Dodano o <?php echo $task->getAddDate()->format('H:i, d.m.Y'); ?></span>
             </div>
         </div>
-        <div class="box__content">
-            <p class="box__text"><?php echo $task->getContent(); ?></p>
-            <span class="box__stars">
-            <?php for ($i = 0; $i < $task->getStarCount() + 1; $i++): ?>
-                <span class="fas fa-star"></span>
-            <?php endfor; ?>
-        </span>
-            <span class="box__time">Dodano o <?php echo $task->getAddDate()->format('H:i, d.m.Y'); ?></span>
-        </div>
-    </div>
-<?php endforeach; ?>
-
+    <?php endforeach; ?>
+</div>
 </body>
 </html>
