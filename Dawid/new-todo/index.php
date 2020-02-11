@@ -24,6 +24,7 @@ $tasks = TaskBuilder::buildAllTasks($data);
 
 <div class="container">
     <h1 class="container__title">Todos</h1>
+    <div class="container__division">
     <?php foreach ($tasks as $task): ?>
         <div class="box">
             <h2 class="box__title">
@@ -42,6 +43,7 @@ $tasks = TaskBuilder::buildAllTasks($data);
             <span class="box__id"><?php echo $task->getId(); ?></span>
         </div>
     <?php endforeach; ?>
+    </div>
 </div>
 
 </body>
