@@ -30,7 +30,7 @@ $tasks = $session->getTasks();
 <body>
 <div class="container">
     <div class="container__buttons">
-        <a title="Reset" class="container__reset-button">RESET</a>
+        <a href="" title="Reset" class="container__reset-button">RESET</a>
     </div>
     <?php foreach ($tasks as $task): ?>
         <div class="<?php echo $task->isArchived() ? 'box box--colorless' : 'box'; ?>">

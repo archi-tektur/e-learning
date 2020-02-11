@@ -20,4 +20,3 @@ $characters = [$c1, $c2, $c3];
 foreach ($characters as $character) {
     echo showCharacterDetails($character) . '<br>';
 }
-
