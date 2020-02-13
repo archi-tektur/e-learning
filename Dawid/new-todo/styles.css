@@ -30,6 +30,10 @@ body {
 }
 
 .container__division {
+    display: flex;
+}
+
+.container__box {
     margin-top: 5px;
     overflow-y: auto;
     width: 400px;

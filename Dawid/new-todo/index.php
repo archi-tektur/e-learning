@@ -6,6 +6,9 @@ require_once __DIR__ . '/src/DataLoader.php';
 $data = DataLoader::load();
 $tasks = TaskBuilder::buildAllTasks($data);
 
+$completed = array_filter($tasks, fn($eachTask) => $eachTask->isCompleted());
+$todo = array_filter($tasks, fn($eachTask) => !$eachTask->isCompleted());
+
 ?>
 <!doctype html>
 <html lang="pl">
@@ -25,24 +28,50 @@ $tasks = TaskBuilder::buildAllTasks($data);
 <div class="container">
     <h1 class="container__title">Todos</h1>
     <div class="container__division">
-    <?php foreach ($tasks as $task): ?>
-        <div class="box">
-            <h2 class="box__title">
-                <?php if ($task->isCompleted()): ?>
-                    <spam aria-hidden="true" class="fas fa-check-square"></spam>
-                <?php else: ?>
-                    <spam aria-hidden="true" class="fas fa-times-circle"></spam>
-                <?php endif; ?>
-                <span><?php echo $task->getTitle(); ?></span>
-            </h2>
-            <hr class="box__divider">
-            <p class="box__completed">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium commodi excepturi facere, fugit
-                harum.
-            </p>
-            <span class="box__id"><?php echo $task->getId(); ?></span>
+        <div class="container__box">
+            <h2>Completed:</h2>
+            <?php foreach ($completed as $task): ?>
+                <div class="box">
+                    <h2 class="box__title">
+                        <?php if ($task->isCompleted()): ?>
+                            <spam aria-hidden="true" class="fas fa-check-square"></spam>
+                        <?php else: ?>
+                            <spam aria-hidden="true" class="fas fa-times-circle"></spam>
+                        <?php endif; ?>
+                        <span><?php echo $task->getTitle(); ?></span>
+                    </h2>
+                    <hr class="box__divider">
+                    <p class="box__completed">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium commodi excepturi facere,
+                        fugit
+                        harum.
+                    </p>
+                    <span class="box__id"><?php echo $task->getId(); ?></span>
+                </div>
+            <?php endforeach; ?>
         </div>
-    <?php endforeach; ?>
+        <div class="container__box">
+            <h2>Not completed</h2>
+            <?php foreach ($todo as $task): ?>
+                <div class="box">
+                    <h2 class="box__title">
+                        <?php if ($task->isCompleted()): ?>
+                            <spam aria-hidden="true" class="fas fa-check-square"></spam>
+                        <?php else: ?>
+                            <spam aria-hidden="true" class="fas fa-times-circle"></spam>
+                        <?php endif; ?>
+                        <span><?php echo $task->getTitle(); ?></span>
+                    </h2>
+                    <hr class="box__divider">
+                    <p class="box__completed">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium commodi excepturi facere,
+                        fugit
+                        harum.
+                    </p>
+                    <span class="box__id"><?php echo $task->getId(); ?></span>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
 </div>
 
